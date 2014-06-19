@@ -22,10 +22,12 @@
 
 $repositories = array(
     'supporterfrog' => array(
-        'branches' => array(),
+        'branches' => array(
+            'master',
+        ),
         'path' => '',
         'command_prefix' => '/usr/bin/',
-        'callback' => ''
+        'callback' => '',
     ),
 );
 
