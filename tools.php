@@ -1,9 +1,12 @@
 <?php
 
-class Tools {
+namespace gitDeployment;
+
+class Tools
+{
     public static function logToFile($string)
     {
-        $filename = 'gitlog.txt';
+        $filename = Config::get('log_filename');
 
         if (!file_exists($filename)) {
             file_put_contents($filename, '');
@@ -14,6 +17,16 @@ class Tools {
         $date = date("Y-m-d H:i:s");
         $output = $date . ' --- ' . $string . "\n";
 
-        file_put_contents('gitlog.txt', $output, FILE_APPEND);
+        file_put_contents($filename, $output, FILE_APPEND);
+    }
+
+    public static function filterPayload($payload)
+    {
+        return json_decode(stripslashes($payload), true);
+    }
+
+    private static function verifyPayload($payload)
+    {
+        
     }
 }
